@@ -11,4 +11,19 @@ public class Product {
         this.explain = explain;
     }
 
+    public String getName()
+    {
+        return this.name;
+    }
+
+    public int getPrice()
+    {
+        return price;
+    }
+
+    public String getExplain()
+    {
+        return explain;
+    }
+
 }
