@@ -16,6 +16,7 @@ public class Main {
         products.add(product2);
         products.add(product3);
         products.add(product4);
+        CommerceSystem commerceSystem = new CommerceSystem(products);
         while(true)
         {
             System.out.println("[ 실시간 커머스 플랫폼 - 전자제품 ]");
