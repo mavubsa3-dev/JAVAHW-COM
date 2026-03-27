@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Category {
     private String name;
-    private List<Product> products;
+    private List<Product> products = new ArrayList<>();
 
 
     public Category(Product product1, Product product2, Product product3, Product product4, String name)
@@ -15,7 +15,7 @@ public class Category {
         this.name = name;
     }
 
-    private String getName()
+    public String getName()
     {
         return this.name;
     }
