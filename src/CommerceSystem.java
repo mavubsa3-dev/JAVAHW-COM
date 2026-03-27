@@ -39,10 +39,45 @@ public class CommerceSystem {
                 System.out.println("0. 뒤로가기");
                 int optionnum = scanner.nextInt();
                 scanner.nextLine();
+                int indexnum = optionnum - 1;
                 if(optionnum != 0)
                 {
-                    System.out.println("선택한 상품: " + category.get(0).getProducts().get(optionnum).getName() + " | " + category.get(0).getProducts().get(optionnum).getPrice() +"원"
-                    + " | " + category.get(0).getProducts().get(optionnum).getExplain() + " | " + category.get(0).getProducts().get(optionnum).getStock());
+                    System.out.println("선택한 상품: " + category.get(0).getProducts().get(indexnum).getName() + " | " + category.get(0).getProducts().get(indexnum).getPrice() +"원"
+                    + " | " + category.get(0).getProducts().get(indexnum).getExplain() + " | " + category.get(0).getProducts().get(indexnum).getStock() + "개");
+                }
+            }
+            if(num == 2)
+            {
+                for(int i=0; i<category.get(1).getProducts().size(); i++)
+                {
+                    System.out.println((i+1) + ". " + category.get(1).getProducts().get(i).getName()+ "      | " + category.get(1).getProducts().get(i).getPrice()
+                            + "      | " + category.get(1).getProducts().get(i).getExplain());
+                }
+                System.out.println("0. 뒤로가기");
+                int optionnum = scanner.nextInt();
+                scanner.nextLine();
+                int indexnum = optionnum - 1;
+                if(optionnum != 0)
+                {
+                    System.out.println("선택한 상품: " + category.get(1).getProducts().get(indexnum).getName() + " | " + category.get(1).getProducts().get(indexnum).getPrice() +"원"
+                            + " | " + category.get(1).getProducts().get(indexnum).getExplain() + " | " + category.get(1).getProducts().get(indexnum).getStock() + "개");
+                }
+            }
+            if(num == 3)
+            {
+                for(int i=0; i<category.get(2).getProducts().size(); i++)
+                {
+                    System.out.println((i+1) + ". " + category.get(2).getProducts().get(i).getName()+ "      | " + category.get(2).getProducts().get(i).getPrice()
+                            + "      | " + category.get(2).getProducts().get(i).getExplain());
+                }
+                System.out.println("0. 뒤로가기");
+                int optionnum = scanner.nextInt();
+                scanner.nextLine();
+                int indexnum = optionnum - 1;
+                if(optionnum != 0)
+                {
+                    System.out.println("선택한 상품: " + category.get(2).getProducts().get(indexnum).getName() + " | " + category.get(2).getProducts().get(indexnum).getPrice() +"원"
+                            + " | " + category.get(2).getProducts().get(indexnum).getExplain() + " | " + category.get(2).getProducts().get(indexnum).getStock() + "개");
                 }
             }
         }
