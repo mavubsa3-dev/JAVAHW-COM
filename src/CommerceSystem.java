@@ -36,6 +36,14 @@ public class CommerceSystem {
                     System.out.println((i+1) + ". " + category.get(0).getProducts().get(i).getName()+ "      | " + category.get(0).getProducts().get(i).getPrice()
                      + "      | " + category.get(0).getProducts().get(i).getExplain());
                 }
+                System.out.println("0. 뒤로가기");
+                int optionnum = scanner.nextInt();
+                scanner.nextLine();
+                if(optionnum != 0)
+                {
+                    System.out.println("선택한 상품: " + category.get(0).getProducts().get(optionnum).getName() + " | " + category.get(0).getProducts().get(optionnum).getPrice() +"원"
+                    + " | " + category.get(0).getProducts().get(optionnum).getExplain() + " | " + category.get(0).getProducts().get(optionnum).getStock());
+                }
             }
         }
     }
