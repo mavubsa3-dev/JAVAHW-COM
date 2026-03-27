@@ -17,6 +17,7 @@ public class Main {
         products.add(product3);
         products.add(product4);
         CommerceSystem commerceSystem = new CommerceSystem(products);
+        Category category = new Category(products);
         commerceSystem.start();
     }
 }
