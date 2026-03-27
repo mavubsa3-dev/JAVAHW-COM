@@ -2,34 +2,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Category {
-    private String[] name = {"전자제품", "의류", "식품"};
+    private String name;
     private List<Product> products;
-    private List<Product> electroProducts = new ArrayList<>();
-    private List<Product> clothesProducts = new ArrayList<>();
-    private List<Product> foodProducts = new ArrayList<>();
 
 
-    public Category(List<Product> product)
+    public Category(Product product1, Product product2, Product product3, Product product4, String name)
     {
-        for(int i=0; i< product.size(); i++)
-        {
-            if(product.get(i).getCate().equals("ele"))
-            {
-                electroProducts.add(product.get(i));
-            }
-            if(product.get(i).getCate().equals("clo"))
-            {
-                clothesProducts.add(product.get(i));
-            }
-            if(product.get(i).getCate().equals("food"))
-            {
-                foodProducts.add(product.get(i));
-            }
-        }
+        products.add(product1);
+        products.add(product2);
+        products.add(product3);
+        products.add(product4);
+        this.name = name;
     }
 
-    public String[] getName()
-    {
-        return name;
-    }
 }
