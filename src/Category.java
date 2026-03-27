@@ -15,4 +15,9 @@ public class Category {
         this.name = name;
     }
 
+    private String getName()
+    {
+        return this.name;
+    }
+
 }
