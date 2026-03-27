@@ -17,7 +17,7 @@ public class CommerceSystem {
         while(true)
         {
             System.out.println("[ 실시간 커머스 플랫폼 메인 ]");
-            for(int i=0; i<3; i++)
+            for(int i=0; i< category.size(); i++)
             {
                 System.out.println((i+1) + ". " + category.get(i).getName());
             }
@@ -29,7 +29,14 @@ public class CommerceSystem {
                 System.out.println("커머스 플랫폼을 종료합니다.");
                 break;
             }
-
+            if(num == 1)
+            {
+                for(int i=0; i<category.get(0).getProducts().size(); i++)
+                {
+                    System.out.println((i+1) + ". " + category.get(0).getProducts().get(i).getName()+ "      | " + category.get(0).getProducts().get(i).getPrice()
+                     + "      | " + category.get(0).getProducts().get(i).getExplain());
+                }
+            }
         }
     }
 }

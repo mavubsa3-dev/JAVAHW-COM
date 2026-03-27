@@ -20,4 +20,9 @@ public class Category {
         return this.name;
     }
 
+    public List<Product> getProducts()
+    {
+        return products;
+    }
+
 }
