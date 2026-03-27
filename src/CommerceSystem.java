@@ -13,6 +13,7 @@ public class CommerceSystem {
 
     public void start()
     {
+        int num = 0;
         while(true)
         {
             System.out.println("[ 실시간 커머스 플랫폼 - 전자제품 ]");
@@ -23,7 +24,7 @@ public class CommerceSystem {
             System.out.println("0. 종료");
             System.out.print("");
 
-            int num = scanner.nextInt();
+            num = scanner.nextInt();
             scanner.nextLine();
             if(num == 0)
             {
