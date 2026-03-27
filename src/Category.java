@@ -11,6 +11,25 @@ public class Category {
 
     public Category(List<Product> product)
     {
-        this.products = new ArrayList<>(product);
+        for(int i=0; i< product.size(); i++)
+        {
+            if(product.get(i).getCate().equals("ele"))
+            {
+                electroProducts.add(product.get(i));
+            }
+            if(product.get(i).getCate().equals("clo"))
+            {
+                clothesProducts.add(product.get(i));
+            }
+            if(product.get(i).getCate().equals("food"))
+            {
+                foodProducts.add(product.get(i));
+            }
+        }
+    }
+
+    public String[] getName()
+    {
+        return name;
     }
 }

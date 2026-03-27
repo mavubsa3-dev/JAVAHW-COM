@@ -16,14 +16,11 @@ public class CommerceSystem {
         int num = 0;
         while(true)
         {
-            System.out.println("[ 실시간 커머스 플랫폼 - 전자제품 ]");
-            for(int i=0; i< products.size(); i++)
-            {
-                System.out.println((i+1) + ". " + products.get(i).getName() + "     | " + products.get(i).getPrice() + "원  | " + products.get(i).getExplain());
-            }
-            System.out.println("0. 종료");
-            System.out.print("");
-
+            System.out.println("[ 실시간 커머스 플랫폼 메인 ]");
+            System.out.println("1. 전자제품");
+            System.out.println("2. 의류");
+            System.out.println("3. 식품");
+            System.out.println("4. 종료");
             num = scanner.nextInt();
             scanner.nextLine();
             if(num == 0)

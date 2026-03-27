@@ -3,12 +3,15 @@ public class Product {
     private int price;
     private String explain;
     private int stock;
+    private String cate;
 
-    public Product(String name, int price, String explain)
+    public Product(String name, int price, String explain, int stock, String cate)
     {
         this.name = name;
         this.price = price;
         this.explain = explain;
+        this.stock = stock;
+        this.cate = cate;
     }
 
     public String getName()
@@ -24,6 +27,16 @@ public class Product {
     public String getExplain()
     {
         return explain;
+    }
+
+    public int getStock()
+    {
+        return stock;
+    }
+
+    public String getCate()
+    {
+        return cate;
     }
 
 }
