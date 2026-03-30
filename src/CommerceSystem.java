@@ -132,7 +132,7 @@ public class CommerceSystem {
     public void executeOrder()
     {
         System.out.println("주문이 완료되었습니다!. 총 금액: " + selectedproduct.getPrice());
-        System.out.println(selectedproduct.getName() + " 재고가" + selectedproduct.getStock() + "개 -> " + selectedproduct.initStock(count) + "개로 업데이트 되었습니다.");
+        System.out.println(selectedproduct.getName() + " 재고가" + selectedproduct.getStock() + " 개 -> " + selectedproduct.initStock(count) + "개로 업데이트 되었습니다.");
     }
 
     public void removeList()
