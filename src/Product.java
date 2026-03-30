@@ -3,6 +3,7 @@ public class Product {
     private int price;
     private String explain;
     private int stock;
+    private int productcount;
 
     public Product(String name, int price, String explain, int stock)
     {
@@ -29,6 +30,16 @@ public class Product {
 
     public int getStock()
     {
+        return stock;
+    }
+
+    public int getProductcount() {
+        return productcount;
+    }
+
+    public int initStock(int count)
+    {
+        stock -= count;
         return stock;
     }
 
