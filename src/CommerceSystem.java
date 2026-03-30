@@ -4,66 +4,98 @@ import java.util.Scanner;
 
 public class CommerceSystem {
     private Scanner scanner = new Scanner(System.in);
-    private List<Category> category;
+    private List<Category> categorylist;
+    private Product selectedproduct;
+    private List<Product> products;
+    private List<Product> basketList;
 
     public CommerceSystem(List<Category> category)
     {
-       this.category = category;
+       this.categorylist = category;
     }
 
     public void start()
     {
-        int num = 0;
         while (true)
         {
-           showplatform();
-           num = inputNum();
-           if(num == 0)
+            products = selectcategorylistnumber();
+            if(products == null)
             {
-                System.out.println("커머스 플랫폼을 종료합니다.");
                 break;
             }
-            int listnum = num - 1;
-            int productnumber = showcategory(listnum);
-            selectproduct(listnum, productnumber);
+            selectedproduct = selectproduct();
+            if (selectedproduct == null) {
+                continue;
+            }
+            showselectproduct();
         }
     }
-    public void showplatform()
+    public List<Product> selectcategorylistnumber()
     {
         System.out.println("[ 실시간 커머스 플랫폼 메인 ]");
-        for (int i = 0; i < category.size(); i++)
+        for (int i = 0; i < categorylist.size(); i++)
         {
-            System.out.println((i+1) + ". " + category.get(i).getName());
+            System.out.println((i+1) + ". " + categorylist.get(i).getName());
         }
         System.out.println("0. 종료");
-    }
-
-    public int inputNum()
-    {
-        int num = scanner.nextInt();
-        scanner.nextLine();
-        return num;
-    }
-
-    public int showcategory(int number)
-    {
-        for(int i = 0; i < category.get(number).getProducts().size(); i++)
+        if(basketList != null)
         {
-            System.out.println((i+1) + ". " + category.get(number).getProducts().get(i).getName()+ "      | " + category.get(number).getProducts().get(i).getPrice()
-                    + "      | " + category.get(number).getProducts().get(i).getExplain());
+            System.out.println("[ 주문 관리 ]");
+            System.out.println("4. 장바구니 확인");
+            System.out.println("5. 주문 취소");
+        }
+        int number = scanner.nextInt();
+        scanner.nextLine();
+        int categorylistnumber =  number - 1;
+        if (categorylistnumber == -1) {
+            System.out.println("커머스 플랫폼을 종료합니다.");
+           return null;
+        }
+        if(categorylistnumber == 4)
+        {
+            removeList();
+        }
+        return categorylist.get(categorylistnumber).getProducts();
+    }
+
+
+    public Product selectproduct()
+    {
+        for(int i = 0; i < products.size(); i++)
+        {
+            Product p = products.get(i);
+            System.out.println((i+1) + ". " + p.getName()+ "      | " + p.getPrice()
+                    + "      | " + p.getExplain());
         }
         System.out.println("0. 뒤로가기");
-        int optionnum = inputNum();
-        int indexnum = optionnum - 1;
-        return indexnum;
+        int productnumber = scanner.nextInt();
+        scanner.nextLine();
+        int selectedproductnum =  productnumber - 1;
+        if (selectedproductnum == -1) {
+            return null;
+        }
+        return products.get(selectedproductnum);
+
     }
 
-    public void selectproduct(int listnum, int indexnum)
+    public void showselectproduct()
     {
-        if(indexnum != -1)
+            System.out.println("선택한 상품: " + selectedproduct.getName() + " | " + selectedproduct.getPrice() +"원"
+                    + " | " + selectedproduct.getExplain() + " | " + selectedproduct.getStock() + "개");
+
+        System.out.println("위 상품을 장바구니에 추가하시겠습니까?");
+        System.out.println("1. 확인          2. 취소");
+        int number = scanner.nextInt();
+        scanner.nextLine();
+        if(number == 1)
         {
-            System.out.println("선택한 상품: " + category.get(listnum).getProducts().get(indexnum).getName() + " | " + category.get(listnum).getProducts().get(indexnum).getPrice() +"원"
-                    + " | " + category.get(listnum).getProducts().get(indexnum).getExplain() + " | " + category.get(listnum).getProducts().get(indexnum).getStock() + "개");
+            basketList.add(selectedproduct);
         }
+    }
+
+    public void removeList()
+    {
+        System.out.println("주문을 취소합니다.");
+        basketList.remove(selectedproduct);
     }
 }
