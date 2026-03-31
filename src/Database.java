@@ -10,7 +10,8 @@ public class Database {
     public Database()
     {
         List<Product> products = new ArrayList<>();
-        List<Category> categoryList = new ArrayList<>();
+        categorylist = new ArrayList<>();
+        basketList = new ArrayList<>();
         Product product1 = new Product("Galaxy S25", 1200000, "최신 안드로이드 스마트폰", 30);
         Product product2 = new Product("iPhone 16", 1350000, "Apple의 최신 스마트폰", 30);
         Product product3 = new Product("MacBook Pro", 2400000, "M3 칩셋이 탑재된 노트북", 30);
@@ -38,9 +39,9 @@ public class Database {
         products.add(product11);
         products.add(product12);
         Category foodCategory = new Category(product9, product10, product11, product12, "식품");
-        categoryList.add(eleCategory);
-        categoryList.add(clothCategory);
-        categoryList.add(foodCategory);
+        categorylist.add(eleCategory);
+        categorylist.add(clothCategory);
+        categorylist.add(foodCategory);
     }
 
     public List<Category> getCategorylist()
@@ -58,9 +59,19 @@ public class Database {
         return selectedproduct;
     }
 
+    public void setSelectedCategory(Category category)
+    {
+        this.selectedCategory = category;
+    }
+
     public List<Product> getBasketList()
     {
         return basketList;
+    }
+
+    public void setSelectedproduct(Product product)
+    {
+        this.selectedproduct = product;
     }
 
     public void addbasketlist(Product selectedproduct)

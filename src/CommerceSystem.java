@@ -28,10 +28,12 @@ public class CommerceSystem {
             if (selectedCategory.getName().equals("SKIP")) {
                 continue;
             }
+            database.setSelectedCategory(selectedCategory);
             selectedproduct = selectproduct();
             if (selectedproduct == null) {
                 continue;
             }
+            database.setSelectedproduct(selectedproduct);
             showselectproduct();
         }
     }
