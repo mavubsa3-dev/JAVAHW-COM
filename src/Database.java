@@ -8,9 +8,16 @@ public class Database {
     private List<Product> basketList;
     private String PW = "admin123";
 
+    private List<Product> electroProducts;
+    private List<Product> clothProducts;
+    private List<Product> foodProducts;
+
     public Database()
     {
-        List<Product> products = new ArrayList<>();
+        electroProducts = new ArrayList<>();
+        clothProducts = new ArrayList<>();
+        foodProducts = new ArrayList<>();
+
         categorylist = new ArrayList<>();
         basketList = new ArrayList<>();
         Product product1 = new Product("Galaxy S25", 1200000, "최신 안드로이드 스마트폰", 30);
@@ -25,24 +32,37 @@ public class Database {
         Product product10 = new Product("고기", 15000, "삼겹살", 30);
         Product product11 = new Product("국", 7000, "된장찌개", 30);
         Product product12 = new Product("갈비", 20000, "돼지갈비", 30);
-        products.add(product1);
-        products.add(product2);
-        products.add(product3);
-        products.add(product4);
-        Category eleCategory = new Category(product1, product2, product3, product4, "전자제품");
-        products.add(product5);
-        products.add(product6);
-        products.add(product7);
-        products.add(product8);
-        Category clothCategory = new Category(product5, product6, product7, product8, "의류");
-        products.add(product9);
-        products.add(product10);
-        products.add(product11);
-        products.add(product12);
-        Category foodCategory = new Category(product9, product10, product11, product12, "식품");
+        electroProducts.add(product1);
+        electroProducts.add(product2);
+        electroProducts.add(product3);
+        electroProducts.add(product4);
+        Category eleCategory = new Category(electroProducts, "전자제품");
+        clothProducts.add(product5);
+        clothProducts.add(product6);
+        clothProducts.add(product7);
+        clothProducts.add(product8);
+        Category clothCategory = new Category(clothProducts, "의류");
+        foodProducts.add(product9);
+        foodProducts.add(product10);
+        foodProducts.add(product11);
+        foodProducts.add(product12);
+        Category foodCategory = new Category(foodProducts, "식품");
         categorylist.add(eleCategory);
         categorylist.add(clothCategory);
         categorylist.add(foodCategory);
+    }
+
+    public List<Product> getElectroProducts()
+    {
+        return electroProducts;
+    }
+
+    public List<Product> getClothProducts(){
+        return clothProducts;
+    }
+
+    public List<Product> getFoodProducts(){
+        return foodProducts;
     }
 
     public List<Category> getCategorylist()
@@ -88,6 +108,23 @@ public class Database {
     public String getPW()
     {
         return PW;
+    }
+
+    public void addProduct(int number, Product product)
+    {
+        if(number == 1)
+        {
+            electroProducts.add(product);
+        }
+        if(number == 2)
+        {
+            clothProducts.add(product);
+        }
+        if(number == 3)
+        {
+            foodProducts.add(product);
+        }
+        System.out.println("상품이 성공적으로 추가되었습니다!");
     }
 
 

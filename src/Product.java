@@ -43,4 +43,16 @@ public class Product {
         return stock;
     }
 
+    public int initPrice(int price)
+    {
+        this.price = price;
+        return price;
+    }
+
+    public String initExplain(String explain)
+    {
+        this.explain = explain;
+        return explain;
+    }
+
 }

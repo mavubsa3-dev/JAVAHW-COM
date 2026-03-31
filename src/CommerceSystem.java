@@ -173,7 +173,7 @@ public class CommerceSystem {
 
             if(pw.equals(database.getPW()))
             {
-                Admin admin = new Admin(database);
+                Admin admin = new Admin(database, scanner);
                 return;
             }
             else{

@@ -3,15 +3,12 @@ import java.util.List;
 
 public class Category {
     private String name;
-    private List<Product> products = new ArrayList<>();
+    private List<Product> products;
 
 
-    public Category(Product product1, Product product2, Product product3, Product product4, String name)
+    public Category(List<Product> products ,String name)
     {
-        products.add(product1);
-        products.add(product2);
-        products.add(product3);
-        products.add(product4);
+        this.products = products;
         this.name = name;
     }
 
@@ -23,6 +20,11 @@ public class Category {
     public List<Product> getProducts()
     {
         return products;
+    }
+
+    public void addProduct(Product product)
+    {
+        products.add(product);
     }
 
 
