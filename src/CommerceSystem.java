@@ -23,11 +23,11 @@ public class CommerceSystem {
         {
             selectedCategory = selectcategoryoption();
             if(selectedCategory == null) {
-                if(isExit)
-                break;
-            }
-            else {
-                continue;
+                if(isExit){
+                    break;
+                }else {
+                    continue;
+                }
             }
             if (selectedCategory.getName().equals("SKIP")) {
                 continue;
@@ -79,7 +79,9 @@ public class CommerceSystem {
         }
         else if(categorylistnumber == 5)
         {
-
+            authorization();
+            isExit = false;
+            return null;
         }
         else
         {
@@ -160,5 +162,23 @@ public class CommerceSystem {
         List<Product> basketList = database.getBasketList();
         System.out.println("주문을 취소합니다.");
         database.removebasketlist(selectedproduct);
+    }
+
+    public void authorization()
+    {
+        for(int count = 1; count <= 3; count++)
+        {
+            System.out.print("비밀번호를 입력하세요: ");
+            String pw = scanner.nextLine();
+
+            if(pw.equals(database.getPW()))
+            {
+                Admin admin = new Admin(database);
+                return;
+            }
+            else{
+                System.out.println("관리자 로그인 실패 " + count + " / 3");
+            }
+        }
     }
 }

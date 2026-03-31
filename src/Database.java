@@ -6,6 +6,7 @@ public class Database {
     private Category selectedCategory;
     private Product selectedproduct;
     private List<Product> basketList;
+    private String PW = "admin123";
 
     public Database()
     {
@@ -82,6 +83,11 @@ public class Database {
     public void removebasketlist(Product selectedproduct)
     {
         basketList.remove(selectedproduct);
+    }
+
+    public String getPW()
+    {
+        return PW;
     }
 
 
