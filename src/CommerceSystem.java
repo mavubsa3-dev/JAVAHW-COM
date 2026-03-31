@@ -7,6 +7,7 @@ public class CommerceSystem {
     private Scanner scanner = new Scanner(System.in);
     private Database database;
     private int count;
+    private boolean isExit = false;
 
 
     public CommerceSystem(Database database)
@@ -21,9 +22,12 @@ public class CommerceSystem {
         while (true)
         {
             selectedCategory = selectcategoryoption();
-            if(selectedCategory == null)
-            {
+            if(selectedCategory == null) {
+                if(isExit)
                 break;
+            }
+            else {
+                continue;
             }
             if (selectedCategory.getName().equals("SKIP")) {
                 continue;
@@ -48,6 +52,7 @@ public class CommerceSystem {
             System.out.println((i+1) + ". " + categorylist.get(i).getName());
         }
         System.out.println("0. 종료");
+        System.out.println("6. 관리자 모드");
         if(!basketList.isEmpty())
         {
             System.out.println("[ 주문 관리 ]");
@@ -59,17 +64,22 @@ public class CommerceSystem {
         int categorylistnumber =  number - 1;
         if (categorylistnumber == -1) {
             System.out.println("커머스 플랫폼을 종료합니다.");
+            isExit = true;
            return null;
         }
         else if(categorylistnumber == 3)
         {
             checkedList();
-            return new Category(null, null, null, null, "SKIP");
+            return null;
         }
         else if(categorylistnumber == 4)
         {
             removeList();
-            return new Category(null, null, null, null, "SKIP");
+            return null;
+        }
+        else if(categorylistnumber == 5)
+        {
+
         }
         else
         {
