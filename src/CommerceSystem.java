@@ -1,18 +1,16 @@
+import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class CommerceSystem {
     private Scanner scanner = new Scanner(System.in);
-    private List<Category> categorylist;
-    private Category selectedCategory;
-    private Product selectedproduct;
-    private List<Product> basketList;
+    private Database database;
     private int count;
 
-    public CommerceSystem(List<Category> category)
+    public CommerceSystem(Database database)
     {
-       this.categorylist = category;
+       this.database = database;
     }
 
     public void start()
