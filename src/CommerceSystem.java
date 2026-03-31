@@ -8,6 +8,7 @@ public class CommerceSystem {
     private Database database;
     private int count;
 
+
     public CommerceSystem(Database database)
     {
        this.database = database;
@@ -15,10 +16,11 @@ public class CommerceSystem {
 
     public void start()
     {
-        basketList = new ArrayList<>();
+        Category selectedCategory;
+        Product selectedproduct;
         while (true)
         {
-            selectedCategory = selectcategorylistnumber();
+            selectedCategory = selectcategoryoption();
             if(selectedCategory == null)
             {
                 break;
@@ -34,8 +36,10 @@ public class CommerceSystem {
         }
     }
 
-    public Category selectcategorylistnumber()
+    public Category selectcategoryoption()
     {
+        List<Category> categorylist = database.getCategorylist();
+        List<Product> basketList = database.getBasketList();
         System.out.println("[ 실시간 커머스 플랫폼 메인 ]");
         for (int i = 0; i < categorylist.size(); i++)
         {
@@ -74,6 +78,7 @@ public class CommerceSystem {
 
     public Product selectproduct()
     {
+        Category selectedCategory = database.getSelectedCategory();
         for(int i = 0; i < selectedCategory.getProducts().size(); i++)
         {
             Product p = selectedCategory.getProducts().get(i);
@@ -93,6 +98,8 @@ public class CommerceSystem {
 
     public void showselectproduct()
     {
+        Product selectedproduct = database.getSelectedproduct();
+        List<Product> basketList = database.getBasketList();
             System.out.println("선택한 상품: " + selectedproduct.getName() + " | " + selectedproduct.getPrice() +"원"
                     + " | " + selectedproduct.getExplain() + " | " + selectedproduct.getStock() + "개");
 
@@ -102,7 +109,7 @@ public class CommerceSystem {
         scanner.nextLine();
         if(number == 1)
         {
-            basketList.add(selectedproduct);
+            database.addbasketlist(selectedproduct);
             System.out.println(selectedproduct.getName() + "가 장바구니에 추가되었습니다!");
             count = selectedproduct.getProductcount();
             count++;
@@ -111,6 +118,7 @@ public class CommerceSystem {
 
     public void checkedList()
     {
+        Product selectedproduct = database.getSelectedproduct();
         System.out.println("아래와 같이 주문하시겠습니까?");
         System.out.println("[ 장비구니 내역 ]");
         System.out.println(selectedproduct.getName() + " | " + selectedproduct.getPrice() + " | " + selectedproduct.getExplain() + " | " +  "  수량:" + count
@@ -129,13 +137,16 @@ public class CommerceSystem {
 
     public void executeOrder()
     {
+        Product selectedproduct = database.getSelectedproduct();
         System.out.println("주문이 완료되었습니다!. 총 금액: " + selectedproduct.getPrice());
         System.out.println(selectedproduct.getName() + " 재고가" + selectedproduct.getStock() + " 개 -> " + selectedproduct.initStock(count) + "개로 업데이트 되었습니다.");
     }
 
     public void removeList()
     {
+        Product selectedproduct = database.getSelectedproduct();
+        List<Product> basketList = database.getBasketList();
         System.out.println("주문을 취소합니다.");
-        basketList.remove(selectedproduct);
+        database.removebasketlist(selectedproduct);
     }
 }

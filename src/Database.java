@@ -63,4 +63,15 @@ public class Database {
         return basketList;
     }
 
+    public void addbasketlist(Product selectedproduct)
+    {
+        basketList.add(selectedproduct);
+    }
+
+    public void removebasketlist(Product selectedproduct)
+    {
+        basketList.remove(selectedproduct);
+    }
+
+
 }
