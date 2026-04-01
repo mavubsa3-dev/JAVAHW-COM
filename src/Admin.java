@@ -33,6 +33,9 @@ public class Admin {
                 addProduct();
             }else if(num == 2) {
                 editProduct();
+            }else if(num == 3)
+            {
+                removeProduct();
             }
 
         }
@@ -66,6 +69,7 @@ public class Admin {
         System.out.print("수정할 상품명을 입력해주세요: ");
         String name = scanner.nextLine();
         Product product = findProduct(name);
+        System.out.println("현재 상품 정보: " + product.getName() + " | " + product.getPrice() + "원 | " + product.getExplain() + " | 재고: " + product.getStock() + "개");
 
         System.out.println("수정할 항목을 선택하세요: ");
         System.out.println("1. 가격");
@@ -88,7 +92,6 @@ public class Admin {
                 Product product = products.get(j);
                 if(name.equals(product.getName()))
                 {
-                    System.out.println("현재 상품 정보: " + product.getName() + " | " + product.getPrice() + "원 | " + product.getExplain() + " | 재고: " + product.getStock() + "개");
                     return product;
                 }
             }
@@ -152,7 +155,10 @@ public class Admin {
 
     public void removeProduct()
     {
-
+        System.out.print("상품 이름을 입력하세요: ");
+        String name = scanner.nextLine();
+        Product product = findProduct(name);
+        database.removeProduct(product);
     }
 
 

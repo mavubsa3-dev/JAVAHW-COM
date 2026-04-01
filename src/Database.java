@@ -127,5 +127,16 @@ public class Database {
         System.out.println("상품이 성공적으로 추가되었습니다!");
     }
 
+    public void removeProduct(Product product)
+    {
+        for(int i=0; i<categorylist.size(); i++)
+        {
+            Category category = categorylist.get(i);
+            List<Product> products = category.getProducts();
+            products.remove(product);
+        }
+        System.out.println("상품이 삭제되었습니다");
+    }
+
 
 }
