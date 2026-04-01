@@ -112,19 +112,23 @@ public class Database {
 
     public void addProduct(int number, Product product)
     {
+        boolean isSuccess = false;
         if(number == 1)
         {
-            electroProducts.add(product);
+            isSuccess = verifyProduct(electroProducts, product);
         }
         if(number == 2)
         {
-            clothProducts.add(product);
+            isSuccess = verifyProduct(clothProducts, product);
         }
         if(number == 3)
         {
-            foodProducts.add(product);
+            isSuccess = verifyProduct(foodProducts, product);
         }
-        System.out.println("상품이 성공적으로 추가되었습니다!");
+        if(isSuccess){
+            System.out.println("상품이 성공적으로 추가되었습니다!");
+        }
+
     }
 
     public void removeProduct(Product product)
@@ -134,8 +138,24 @@ public class Database {
             Category category = categorylist.get(i);
             List<Product> products = category.getProducts();
             products.remove(product);
+            basketList.remove(product);
         }
         System.out.println("상품이 삭제되었습니다");
+    }
+
+    public boolean verifyProduct(List<Product> list, Product product)
+    {
+        for(int i=0; i<list.size(); i++)
+        {
+           if(list.get(i).getName().equals(product.getName()))
+            {
+                System.out.println("이미 등록된 상품입니다.");
+                return false;
+            }else{
+               list.add(product);
+               return true;
+           }
+        }
     }
 
 
