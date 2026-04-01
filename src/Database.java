@@ -52,6 +52,18 @@ public class Database {
         categorylist.add(foodCategory);
     }
 
+    public List<Product> getElectroProducts()
+    {
+        return electroProducts;
+    }
+
+    public List<Product> getClothProducts(){
+        return clothProducts;
+    }
+
+    public List<Product> getFoodProducts(){
+        return foodProducts;
+    }
 
     public List<Category> getCategorylist()
     {

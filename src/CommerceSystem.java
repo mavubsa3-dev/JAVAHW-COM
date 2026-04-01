@@ -93,9 +93,9 @@ public class CommerceSystem {
     public Product selectproduct()
     {
         Category selectedCategory = database.getSelectedCategory();
-        for(int i = 0; i < selectedCategory.getProducts().size(); i++)
+        for(int i = 0; i < selectedCategory.getProductslist().size(); i++)
         {
-            Product p = selectedCategory.getProducts().get(i);
+            Product p = selectedCategory.getProductslist().get(i);
             System.out.println((i+1) + ". " + p.getName()+ "      | " + p.getPrice()
                     + "      | " + p.getExplain());
         }
@@ -106,7 +106,7 @@ public class CommerceSystem {
         if (selectedproductnum == -1) {
             return null;
         }
-        return selectedCategory.getProducts().get(selectedproductnum);
+        return selectedCategory.getProductslist().get(selectedproductnum);
 
     }
 

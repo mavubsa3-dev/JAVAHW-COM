@@ -85,7 +85,7 @@ public class Admin {
         for(int i=0; i<categorylist.size(); i++)
         {
             Category category = categorylist.get(i);
-            List<Product> products = category.getProducts();
+            List<Product> products = category.getProductslist();
             for(int j=0; j<products.size(); j++)
             {
                 Product product = products.get(j);
