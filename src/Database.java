@@ -52,18 +52,6 @@ public class Database {
         categorylist.add(foodCategory);
     }
 
-    public List<Product> getElectroProducts()
-    {
-        return electroProducts;
-    }
-
-    public List<Product> getClothProducts(){
-        return clothProducts;
-    }
-
-    public List<Product> getFoodProducts(){
-        return foodProducts;
-    }
 
     public List<Category> getCategorylist()
     {
@@ -112,19 +100,8 @@ public class Database {
 
     public void addProduct(int number, Product product)
     {
-        boolean isSuccess = false;
-        if(number == 1)
-        {
-            isSuccess = verifyProduct(electroProducts, product);
-        }
-        if(number == 2)
-        {
-            isSuccess = verifyProduct(clothProducts, product);
-        }
-        if(number == 3)
-        {
-            isSuccess = verifyProduct(foodProducts, product);
-        }
+        Category category = categorylist.get(number - 1);
+        boolean isSuccess = verifyProduct(category.getProductslist(), product);
         if(isSuccess){
             System.out.println("상품이 성공적으로 추가되었습니다!");
         }
@@ -136,7 +113,7 @@ public class Database {
         for(int i=0; i<categorylist.size(); i++)
         {
             Category category = categorylist.get(i);
-            List<Product> products = category.getProducts();
+            List<Product> products = category.getProductslist();
             products.remove(product);
             basketList.remove(product);
         }
@@ -151,11 +128,10 @@ public class Database {
             {
                 System.out.println("이미 등록된 상품입니다.");
                 return false;
-            }else{
-               list.add(product);
-               return true;
-           }
+            }
         }
+        list.add(product);
+        return true;
     }
 
 

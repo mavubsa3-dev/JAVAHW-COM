@@ -17,15 +17,11 @@ public class Category {
         return this.name;
     }
 
-    public List<Product> getProducts()
+    public List<Product> getProductslist()
     {
         return products;
     }
 
-    public void addProduct(Product product)
-    {
-        products.add(product);
-    }
 
 
 }

@@ -21,7 +21,7 @@ public class CommerceSystem {
         Product selectedproduct;
         while (true)
         {
-            selectedCategory = selectcategoryoption();
+            selectedCategory = selectcategory();
             if(selectedCategory == null) {
                 if(isExit){
                     break;
@@ -42,7 +42,7 @@ public class CommerceSystem {
         }
     }
 
-    public Category selectcategoryoption()
+    public Category selectcategory()
     {
         List<Category> categorylist = database.getCategorylist();
         List<Product> basketList = database.getBasketList();
