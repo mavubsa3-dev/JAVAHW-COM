@@ -11,6 +11,7 @@ public class Database {
     private List<Product> electroProducts;
     private List<Product> clothProducts;
     private List<Product> foodProducts;
+    Customer customer;
 
     public Database()
     {
@@ -50,6 +51,7 @@ public class Database {
         categorylist.add(eleCategory);
         categorylist.add(clothCategory);
         categorylist.add(foodCategory);
+        customer = new Customer("김옥자", "ohkza@naver.com", "Bronze");
     }
 
     public List<Product> getElectroProducts()
