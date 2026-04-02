@@ -149,15 +149,19 @@ public class CommerceSystem {
         scanner.nextLine();
         if(num == 1)
         {
-            executeOrder(totalprice);
+            executeOrder(list, totalprice);
         }
     }
 
-    public void executeOrder(int price)
+    public void executeOrder(List<Product> list, int price)
     {
-        Product selectedproduct = database.getSelectedproduct();
         System.out.println("주문이 완료되었습니다!. 총 금액: " + price + "원");
-        System.out.println(selectedproduct.getName() + " 재고가" + selectedproduct.getStock() + " 개 -> " + selectedproduct.initStock(count) + "개로 업데이트 되었습니다.");
+        for(int i=0; i< list.size(); i++)
+        {
+            Product selectedproduct = list.get(i);
+            System.out.println(selectedproduct.getName() + " 재고가" + selectedproduct.getStock() + " 개 -> " + selectedproduct.initStock(count) + "개로 업데이트 되었습니다.");
+        }
+        database.clearBasketlist();
     }
 
     public void removeList()

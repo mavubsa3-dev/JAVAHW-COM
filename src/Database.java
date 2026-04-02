@@ -107,6 +107,10 @@ public class Database {
         basketList.remove(selectedproduct);
     }
 
+    public void clearBasketlist(){
+        basketList.clear();
+    }
+
     public String getPW()
     {
         return PW;
