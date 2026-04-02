@@ -132,27 +132,31 @@ public class CommerceSystem {
 
     public void checkedList()
     {
-        Product selectedproduct = database.getSelectedproduct();
+        List<Product> list = database.getBasketList();
+        int totalprice = 0;
         System.out.println("아래와 같이 주문하시겠습니까?");
         System.out.println("[ 장비구니 내역 ]");
-        System.out.println(selectedproduct.getName() + " | " + selectedproduct.getPrice() + " | " + selectedproduct.getExplain() + " | " +  "  수량:" + count
-        + "개");
-
+        for(int i=0; i<list.size(); i++) {
+            Product selectedproduct = list.get(i);
+            System.out.println(selectedproduct.getName() + " | " + selectedproduct.getPrice() + " | " + selectedproduct.getExplain() + " | " + "  수량:" + count
+                    + "개");
+            totalprice += selectedproduct.getPrice();
+        }
         System.out.println("[ 총 주문 금액 ]");
-        System.out.println(selectedproduct.getPrice() + "원");
+        System.out.println(totalprice + "원");
         System.out.println("1. 주문 확정           2. 메인으로 돌아가기");
         int num = scanner.nextInt();
         scanner.nextLine();
         if(num == 1)
         {
-            executeOrder();
+            executeOrder(totalprice);
         }
     }
 
-    public void executeOrder()
+    public void executeOrder(int price)
     {
         Product selectedproduct = database.getSelectedproduct();
-        System.out.println("주문이 완료되었습니다!. 총 금액: " + selectedproduct.getPrice());
+        System.out.println("주문이 완료되었습니다!. 총 금액: " + price + "원");
         System.out.println(selectedproduct.getName() + " 재고가" + selectedproduct.getStock() + " 개 -> " + selectedproduct.initStock(count) + "개로 업데이트 되었습니다.");
     }
 
@@ -181,4 +185,6 @@ public class CommerceSystem {
             }
         }
     }
+
+
 }
